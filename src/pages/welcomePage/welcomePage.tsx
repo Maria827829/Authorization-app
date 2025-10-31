@@ -2,8 +2,10 @@ import TitleForPage from 'components/controls/TitleForPage/TitleForPage';
 import style from './welcomePage.module.scss';
 import Typography from 'components/controls/Typography/Typography';
 import Button from 'components/controls/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function WelcomePage() {
+    const navigate = useNavigate();
 
 	return (
 		<div className={style.welcomePage}>
@@ -19,6 +21,7 @@ function WelcomePage() {
                     <Button
                         className={style.button}
                         text='Sign in'
+                        onClick={(): void => { navigate('/signIn') }}
                     />
                     <div className={style.linkNewAccount}>
                         <Typography text='New customer?' />

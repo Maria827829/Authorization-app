@@ -1,0 +1,40 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    .label {
+        font-size: 14px;
+        font-weight: 600;
+        color: $black-color;
+    }
+
+    .inputWrapper {
+        position: relative;
+
+        .inputMain {
+            width: 100%;
+            background-color: $lightGrey-color;
+            height: 48px;
+            color: $black-color;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px;
+            box-sizing: border-box;
+            border: 1px solid $darkWhite-color;
+            border-radius: 8px;
+
+            &:focus {
+                background-color: $lightAqua-color;
+                border: 1px solid $aqua-color;
+                outline: none;
+            }
+        }
+
+        .image {
+            position: absolute;
+            right: 24px;
+            top: 15px;
+        }
+    }
+}
