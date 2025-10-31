@@ -1,0 +1,62 @@
+.welcomePage {
+   position: relative;
+
+   .imgX {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 225px;
+        height: 310px;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        background: url('src/assets/images/X.png') no-repeat center;
+        background-size: contain;
+    }
+
+    .imgR {
+        position: absolute;
+        top: 340px;
+        left: 0;
+        width: 175px;
+        height: 310px;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        background: url('src/assets/images/R.png') no-repeat center;
+        background-size: contain;
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+        padding: 134px 24px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 227px;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 23px;
+        }
+
+        .loginContainer {
+
+            .button {
+                margin: 13px 0 27px;
+            }
+
+            .linkNewAccount {
+                display: flex;
+                gap: 2px;
+
+                .link {
+                    color: $blue-color;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
