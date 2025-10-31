@@ -1,0 +1,24 @@
+.signUpPage {
+
+    .content {
+        margin: 0 24px;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 23px;
+            margin-bottom: 43px;
+        }
+
+        .form {
+
+            .emailInput {
+                margin-bottom: 20px;
+            }
+
+            .button {
+                margin-top: 47px;
+            }
+        }
+    }
+}

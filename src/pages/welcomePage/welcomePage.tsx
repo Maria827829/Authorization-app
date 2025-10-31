@@ -25,7 +25,12 @@ function WelcomePage() {
                     />
                     <div className={style.linkNewAccount}>
                         <Typography text='New customer?' />
-                        <span className={style.link}>Create new account</span>
+                        <span
+                            className={style.link}
+                            onClick={(): void => { navigate('/signUp') }}
+                        >
+                            Create new account
+                        </span>
                     </div>
                 </div>
             </div>
