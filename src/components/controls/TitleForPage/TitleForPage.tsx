@@ -4,7 +4,7 @@ interface Props {
     title: string;
 };
 
-function TitleForPage({title}: Props) {
+function TitleForPage({ title }: Props) {
 
 	return (
         <h1 className={style.titleForPage}>{title}</h1>

@@ -1,0 +1,21 @@
+.usersList {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .userItem {
+        display: flex;
+        gap: 20px;
+        font-size: 16px;
+        font-weight: 600;
+
+        .item {
+            width: 40px;
+        }
+
+        .itemEmail {
+            width: 200px;
+        }
+    }
+}

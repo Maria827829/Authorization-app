@@ -1,12 +1,12 @@
 import style from './Checkbox.module.scss';
 
-interface CheckboxProps {
+interface Props {
   label: string;
   checked?: boolean;
   onChange?: () => void;
 }
 
-function Checkbox({ label, checked = false, onChange }: CheckboxProps) {
+function Checkbox({ label, checked = false, onChange }: Props) {
   return (
     <label className={style.checkboxWrapper}>
       <input

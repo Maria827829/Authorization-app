@@ -4,6 +4,7 @@ import WelcomePage from 'pages/welcomePage/welcomePage';
 import Footer from 'components/common/Footer/Footer';
 import SignInPage from 'pages/signInPage/signInPage';
 import SignUpPage from 'pages/signUpPage/signUpPage';
+import UsersPage from 'pages/usersPage/usersPage';
 
 function App() {
 
@@ -22,6 +23,10 @@ function App() {
 					<Route
 						path={'/signUp'}
 						element={<SignUpPage />}
+					/>
+					<Route
+						path={'/users'}
+						element={<UsersPage />}
 					/>
 				</Routes>
 			</BrowserRouter>
