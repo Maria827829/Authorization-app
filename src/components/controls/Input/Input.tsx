@@ -7,6 +7,9 @@ interface Props {
     value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     name: string;
+    isError?: boolean;
+    isErrorPassword?: boolean;
+    errorText?: string;
     option?: string;
     src?: string;
     onClick?: () => void;
@@ -19,6 +22,9 @@ function Input({
     value,
     onChange,
     name,
+    isError = false,
+    isErrorPassword = false,
+    errorText = '',
     option = 'text',
     src = '',
     onClick = (): void => {},
@@ -39,7 +45,11 @@ function Input({
             </label>
             <div className={style.inputWrapper}>
                 <input
-                    className={style.inputMain}
+                    className={`
+                        ${style.inputMain}
+                        ${isError && style.errorInput}
+                        ${isErrorPassword && style.errorPassword}
+                    `}
                     value={value}
                     name={name}
                     onChange={onChange}
@@ -54,6 +64,12 @@ function Input({
                     />
                 )}
             </div>
+            {isError && (
+                <span className={style.errorText}>{errorText}</span>
+            )}
+            {isErrorPassword && (
+                <span className={style.errorText}>{errorText}</span>
+            )}
         </div>
 	)
 }

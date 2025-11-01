@@ -15,10 +15,6 @@
     cursor: pointer;
     outline: none;
 
-    &:disabled {
-        opacity: 0.5;
-    }
-
     &:active {
         background-color: $darkBlue-color;
     }
@@ -29,5 +25,12 @@
             background-color: $lightBlue-color;
             transition: 0.3s;
         }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+        user-select: none;
     }
 }

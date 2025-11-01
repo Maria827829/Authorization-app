@@ -30,6 +30,15 @@
                 border: 1px solid $aqua-color;
                 outline: none;
             }
+
+            &.errorInput {
+                border: 1px solid $red-color;
+                background-color: $lightRed-color;
+            }
+
+            &.errorPassword {
+                border: 1px solid $red-color;
+            }
         }
 
         .image {
@@ -42,5 +51,13 @@
                 left: 560px;
             }
         }
+    }
+
+    .errorText {
+        color: $red-color;
+        font-size: 14px;
+        font-weight: 600;
+        position: absolute;
+        margin-top: 77px;
     }
 }

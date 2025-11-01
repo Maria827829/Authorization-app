@@ -5,6 +5,7 @@
     cursor: pointer;
     user-select: none;
     margin-top: 30px;
+    -webkit-tap-highlight-color: transparent;
 
     .checkboxInput {
         display: none;
