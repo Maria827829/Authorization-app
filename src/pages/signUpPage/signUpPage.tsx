@@ -99,6 +99,11 @@ function SignUpPage() {
                         isDisabled={isDisabled}
                     />
                 </form>
+                <Typography
+                    text='ошибка на бэке'
+                    isError
+                    className={style.errorText}
+                />
             </div>
         </div>
 	)

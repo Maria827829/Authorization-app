@@ -8,8 +8,10 @@ import Button from 'components/controls/Button/Button';
 import { useEffect, useState } from 'react';
 import Check from 'assets/images/Check.svg';
 import Cross from 'assets/images/Cross.svg';
+import { useNavigate } from 'react-router-dom';
 
 function SignInPage() {
+    const navigate = useNavigate();
     const [emailValue, setEmailValue] = useState<string>('');
     const [ isErrorEmail, setIsErrorEmail ] = useState<boolean>(false);
     const [ isValidEmail, setIsValidEmail ] = useState<boolean>(false);
@@ -85,8 +87,14 @@ function SignInPage() {
                         text='Sign in'
                         className={style.button}
                         isDisabled={isDisabled}
+                        onClick={(): void => { navigate('/users') }}
                     />
                 </form>
+                <Typography
+                    text='ошибка на бэке'
+                    isError
+                    className={style.errorText}
+                />
             </div>
         </div>
 	)
