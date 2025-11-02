@@ -7,7 +7,7 @@ export const UsersApi = {
     getUsers: async (): Promise<UsersListDto> => {
         const res = await api.get<UsersListDto>('/users', {
             headers: {
-            'x-access-token': token || '',
+            'x-access-token': token,
             },
         });
 

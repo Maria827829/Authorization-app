@@ -9,7 +9,6 @@ const api: AxiosInstance = axios.create({
       'accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    withCredentials: true,
     timeout: 30000,
 });
 
