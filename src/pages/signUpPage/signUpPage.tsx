@@ -9,15 +9,20 @@ import Checkbox from 'components/controls/Checkbox/Checkbox';
 import { useCallback, useEffect, useState } from 'react';
 import Check from 'assets/images/Check.svg';
 import Cross from 'assets/images/Cross.svg';
+import { SignUpApi } from 'api/authApi';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-    const [isChecked, setIsChecked] = useState<boolean>(false);
-    const [emailValue, setEmailValue] = useState<string>('');
+    const navigate = useNavigate();
+    const [ isChecked, setIsChecked ] = useState<boolean>(false);
+    const [ emailValue, setEmailValue ] = useState<string>('');
     const [ isErrorEmail, setIsErrorEmail ] = useState<boolean>(false);
     const [ isValidEmail, setIsValidEmail ] = useState<boolean>(false);
-    const [passwordValue, setPasswordValue] = useState<string>('');
+    const [ passwordValue, setPasswordValue ] = useState<string>('');
     const [ isErrorPassword, setIsErrorPassword ] = useState<boolean>(false);
     const [ isDisabled, setIsDisabled ] = useState<boolean>(false);
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ backendError, setBackendError ] = useState<string>('');
 
     const handleChecked = useCallback((): void => {
 		setIsChecked((isCheckedPrev) => { return !isCheckedPrev });
@@ -48,6 +53,28 @@ function SignUpPage() {
         } else {
             setIsErrorPassword(false);
         }
+    };
+
+    const handleSignUp = (): void => {
+        if (isDisabled) return;
+
+        setBackendError('');
+        setIsLoading(true);
+
+        SignUpApi.signUp({
+            email: emailValue,
+            password: passwordValue,
+        })
+            .then(() => {
+                navigate('/');
+            })
+            .catch((error) => {
+                const message = error.response?.data?.message || 'Registration failed';
+                setBackendError(message);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     useEffect(() => {
@@ -94,16 +121,19 @@ function SignUpPage() {
                         onChange={(): void => { handleChecked() }}
                     />
                     <Button
-                        text='Sign in'
+                        text={isLoading ? 'Loading...' : 'Sign up'}
                         className={style.button}
-                        isDisabled={isDisabled}
+                        isDisabled={isLoading ? true : isDisabled}
+                        onClick={(): void => { handleSignUp() }}
                     />
                 </form>
-                <Typography
-                    text='ошибка на бэке'
-                    isError
-                    className={style.errorText}
-                />
+                {backendError && (
+                    <Typography
+                        text={backendError}
+                        isError
+                        className={style.errorText}
+                    />
+                )}
             </div>
         </div>
 	)

@@ -21,6 +21,7 @@ function Button({
                 ${isDisabled && style.disabled}
                 ${className}
             `}
+            type='button'
             onClick={onClick}
         >
             {text}

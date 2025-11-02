@@ -13,7 +13,7 @@ function Footer() {
 
 	return (
         <footer className={style.footer}>
-            <span className={style.version}>v1.0.0</span>
+            <span className={style.version}>{version}</span>
         </footer>
 	)
 }

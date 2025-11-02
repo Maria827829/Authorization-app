@@ -9,15 +9,18 @@ import { useEffect, useState } from 'react';
 import Check from 'assets/images/Check.svg';
 import Cross from 'assets/images/Cross.svg';
 import { useNavigate } from 'react-router-dom';
+import { SignInApi } from 'api/authApi';
 
 function SignInPage() {
     const navigate = useNavigate();
-    const [emailValue, setEmailValue] = useState<string>('');
+    const [ emailValue, setEmailValue ] = useState<string>('');
     const [ isErrorEmail, setIsErrorEmail ] = useState<boolean>(false);
     const [ isValidEmail, setIsValidEmail ] = useState<boolean>(false);
-    const [passwordValue, setPasswordValue] = useState<string>('');
+    const [ passwordValue, setPasswordValue ] = useState<string>('');
     const [ isErrorPassword, setIsErrorPassword ] = useState<boolean>(false);
     const [ isDisabled, setIsDisabled ] = useState<boolean>(false);
+    const [ backendError, setBackendError ] = useState<string>('');
+    const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
     const changeEmailValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const newValue = e.target.value;
@@ -44,6 +47,28 @@ function SignInPage() {
         } else {
             setIsErrorPassword(false);
         }
+    };
+
+    const handleSignIn = (): void => {
+        if (isDisabled) return;
+
+        setBackendError('');
+        setIsLoading(true);
+
+        SignInApi.signIn({
+            email: emailValue,
+            password: passwordValue,
+        })
+            .then(() => {
+                navigate('/users');
+            })
+            .catch((error) => {
+                const message = error.response?.data?.message || 'Login failed';
+                setBackendError(message);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     useEffect(() => {
@@ -84,17 +109,19 @@ function SignInPage() {
                         errorText='The field must contain at least 3 characters.'
                     />
                     <Button
-                        text='Sign in'
+                        text={isLoading ? 'Loading...' : 'Sign in'}
                         className={style.button}
                         isDisabled={isDisabled}
-                        onClick={(): void => { navigate('/users') }}
+                        onClick={():void => { handleSignIn() }}
                     />
                 </form>
-                <Typography
-                    text='ошибка на бэке'
-                    isError
-                    className={style.errorText}
-                />
+                {backendError && (
+                    <Typography
+                        text={backendError}
+                        isError
+                        className={style.errorText}
+                    />
+                )}
             </div>
         </div>
 	)
