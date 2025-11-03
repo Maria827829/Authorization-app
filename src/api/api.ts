@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
-const BASE_URL = 'http://myaidentity.com:39069';
+const BASE_URL = 'https://myaidentity.com/artistic-seagull/api';
 
 const api: AxiosInstance = axios.create({
     baseURL: BASE_URL,
